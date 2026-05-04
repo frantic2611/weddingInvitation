@@ -1,0 +1,96 @@
+.parting{
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    background-image: url("../images/backparting1.svg");
+
+}
+
+.parting-content{
+    display: flex;
+    flex-direction: column;   /* элементы выстраиваются вертикально */
+    align-items: center;      /* горизонтальное выравнивание внутри колонки */
+    width: 100%;
+    max-width: 350px;
+    padding-top: 80px;
+}
+
+.header-parting-text{
+    font-family: 'Anticva-Regular', serif;
+    color: #4D728F;
+    font-size: 28px;
+    font-weight: 400;
+    max-width: 350px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.with-love-text{
+    font-family: 'Kapakana', serif;
+    color: #4D728F;
+    font-size: 50px;
+    font-weight: 400;
+    max-width: 350px;
+    text-align: center;
+    margin-top: 180px;
+}
+
+.with-love-parting{
+    align-items: center;
+}
+
+/* Контейнер таймера */
+.parting-time-grid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+}
+
+/* Верхний ряд (числа и двоеточия) */
+.parting-grid-numbers {
+    display: grid;
+    grid-template-columns: repeat(5, auto);  /* 5 колонок: число, :, число, :, число */
+    gap: 8px;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Нижний ряд (подписи) */
+.parting-grid-words {
+    display: grid;
+    grid-template-columns: repeat(5, auto);  /* те же 5 колонок */
+    gap: 8px;
+    justify-content: center;
+}
+
+/* Стили для чисел */
+.parting-numbers-element {
+    font-family: 'Kapakana', serif;
+    color: #4D728F;
+    font-size: 48px;
+    font-weight: 500;
+    text-align: center;
+    min-width: 50px;
+}
+
+/* Стили для двоеточий */
+.twodots {
+    font-size: 40px;
+    min-width: 20px;
+}
+
+/* Стили для подписей */
+.parting-words-element {
+    font-family: 'Anticva-Regular', serif;
+    color: #4D728F;
+    font-size: 14px;
+    text-align: center;
+    min-width: 50px;
+}
+
+/* Пустые ячейки (под двоеточиями) */
+.parting-words-element.empty {
+    min-width: 20px;        /* такая же ширина, как у двоеточий */
+}

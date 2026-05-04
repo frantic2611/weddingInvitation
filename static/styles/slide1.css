@@ -1,0 +1,85 @@
+.title{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url("../images/background.png");
+}
+
+.title-text{
+    font-family: 'Kapakana', cursive;
+    margin: 0;
+    padding: 0;
+    line-height: 1.2;
+}
+
+
+.wedding-line-text{
+    font-size: 42px;
+}
+
+.rashid-line-text, .marina-line-text, .ampersand-line-text{
+    font-size: 40px;
+}
+
+.date-line-text{
+    font-size: 36px;
+}
+
+.title-content-body{
+    display: flex;
+    flex-direction: column;   /* элементы выстраиваются вертикально */
+    align-items: center;      /* горизонтальное выравнивание внутри колонки */
+    gap: 8px;               /* расстояние между элементами */
+    width: 100%;
+    max-width: 350px;
+}
+
+.names-group{
+    display: flex;
+    flex-direction: column;   /* элементы выстраиваются вертикально */
+    align-items: center;
+}
+
+.rashid-line-text {
+    margin-top: 12px;
+    margin-bottom: -8px;
+}
+.ampersand-line-text {
+    margin-top: -4px;
+    margin-bottom: -4px;
+}
+.marina-line-text {
+    margin-top: -8px;
+    margin-bottom: 12px;
+}
+
+
+.title-content-body{
+    background-image: url("../images/shield2.svg");
+    background-size: contain;     /* щит вписывается в контейнер */
+    background-repeat: no-repeat;
+    background-position: center;
+    position: relative;           /* для позиционирования текста внутри */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 245px;
+    height: 371px;
+}
+
+.title-content{
+    background-image: url("../images/shield1.svg");  /* большой щит */
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    /* Размеры внешнего щита (подставьте ваши точные значения) */
+    width: 264px;
+    height: 401px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: relative;
+}

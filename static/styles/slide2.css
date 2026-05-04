@@ -1,0 +1,161 @@
+
+
+.greeting{
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    background-image: url("../images/stroke.svg");
+}
+
+.greeting-content{
+    display: flex;
+    flex-direction: column;   /* элементы выстраиваются вертикально */
+    align-items: center;      /* горизонтальное выравнивание внутри колонки */
+    width: 100%;
+    max-width: 350px;
+    padding-top: 130px;
+}
+
+.header-greeting{
+    padding: 0;
+    margin: 0;
+}
+
+.greeting-header-text{
+    margin-top: 0;
+}
+
+.month-greeting{
+    margin-top: 60px;
+}
+
+.greeting-body-text{
+    max-width: 280px;
+    text-align: center;
+    font-size: 20px;
+}
+
+.greeting-text {
+    font-family: 'Anticva-Regular', serif;
+}
+
+.greeting-header-text {
+    font-family: 'Playfair Display SC', serif;
+    font-size: 32px;
+}
+
+.greeting-month-text{
+    font-size: 24px;
+}
+
+
+
+
+
+.date-greeting {
+    width: 100%;
+    margin-top: -4px;
+
+    display: flex;
+    justify-content: center;
+}
+
+/* Основная сетка календаря */
+.calendar-grid {
+    display: grid;
+    grid-template-rows: auto auto;  /* два ряда: дни недели и числа */
+    gap: 18px;
+    width: 70%;
+
+}
+
+/* Ряд с днями недели */
+.calendar-weekdays {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);  /* 5 равных колонок */
+    gap: 2px;                               /* минимальный зазор */
+}
+
+.weekday {
+    font-family: 'Anticva-Regular', serif;
+    font-size: 18px;
+    color: #4D728F;
+    letter-spacing: 1px;
+    text-align: center;
+    padding: 0;
+    margin: 0;
+}
+
+/* Ряд с числами */
+.calendar-dates {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);  /* 5 равных колонок */
+    gap: 2px;                               /* минимальный зазор */
+}
+
+.date {
+    font-family: 'Anticva-Regular', serif;
+    font-size: 22px;
+    color: #4D728F;
+    text-align: center;
+    padding: 0;
+    margin: 0;
+}
+
+.calendar-with-bow {
+    position: relative;        /* ← ключевой момент! Теперь внутри всё будет отталкиваться от этого блока */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+
+.bow-wrapper {
+    position: absolute;        /* ← бант вырывается из общего потока */
+    top: 10px;                /* ← смещаем вверх (относительно .calendar-with-bow) */
+    left: 50%;                 /* ← привязываем к центру родителя */
+    transform: translateX(-50%); /* ← центрируем относительно своей ширины */
+    width: 85%;                /* ← ширина банта (проценты относительно родителя) */
+    max-width: 300px;          /* ← ограничиваем максимум */
+    z-index: 1;                /* ← слой 1 (ниже календаря) */
+    pointer-events: none;      /* ← бант не мешает нажимать на календарь */
+}
+
+.bow-image {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.date-greeting {
+    position: relative;         /* ← чтобы z-index работал */
+    z-index: 2;                /  /* ← прозрачный фон, чтобы бант был виден */
+}
+
+.date-highlight-wrapper {
+    position: relative;
+    display: inline-flex;
+    justify-content: center;
+
+    align-items: center;
+}
+
+/* Сама рамка (абсолютное позиционирование внутри обёртки) */
+.date-frame {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 65px;
+    height: 56px;
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* Текст даты — поверх рамки */
+.date-highlight {
+    position: relative;
+    z-index: 1;
+}
