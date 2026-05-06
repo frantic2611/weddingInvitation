@@ -23,9 +23,72 @@
 .text{
     color: #4D728F;
 }
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+
 
 .slide{
     background-color: #F3F0E6;
-    width: 393px;
-    height: 852px;
+
+    width: 100%;
+    min-height: 100dvh;
+    padding-bottom: 87px;
+
+}
+
+/* ВТОРОЙ СЛАЙД */
+.greeting {
+    background-image: url("../images/stroke.svg");
+    background-size: cover;
+    background-position: center top;    /* центрируем, но прижимаем к верху */
+    background-repeat: no-repeat;
+    background-color: #F3F0E6;
+}
+
+.greeting {
+    background-size: 100% auto;    /* ширина 100%, высота по пропорции */
+    background-position: center top;
+}
+
+/* ТРЕТИЙ СЛАЙД */
+.location {
+    background-image: url("../images/stroke.svg");
+    background-size: cover;
+    background-position: center top;
+    background-repeat: no-repeat;
+    background-color: #F3F0E6;
+}
+
+.location {
+    background-size: 100% auto;    /* ширина 100%, высота по пропорции */
+    background-position: center top;
+}
+/* ЧЕТВЁРТЫЙ СЛАЙД */
+
+
+.parting {
+    background-image: url("../images/backparting1.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: #F3F0E6;
+}
+
+.parting {
+    background-size: 100% auto;    /* ширина 100%, высота по пропорции */
+    background-position: center top;
+}
+/* Для экранов высотой меньше 700px */
+@media (max-height: 700px) {
+    .greeting, .location, .parting {
+        background-size: 100% auto;    /* ширина 100%, высота по пропорции */
+        background-position: center 20%;  /* смещаем вверх */
+    }
+
+    .greeting-content, .location-content, .parting-content {
+        padding-top: 40px;            /* уменьшаем отступ сверху */
+    }
 }

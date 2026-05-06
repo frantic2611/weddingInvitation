@@ -1,58 +1,48 @@
-.parting{
+/* ===== ЧЕТВЁРТЫЙ СЛАЙД ===== */
+
+.parting {
     display: flex;
     align-items: flex-start;
     justify-content: center;
-    background-image: url("../images/backparting1.svg");
-
 }
 
-.parting-content{
+.parting-content {
     display: flex;
-    flex-direction: column;   /* элементы выстраиваются вертикально */
-    align-items: center;      /* горизонтальное выравнивание внутри колонки */
+    flex-direction: column;
+    align-items: center;
     width: 100%;
     max-width: 350px;
-    padding-top: 80px;
+    padding-top: clamp(60px, 12vh, 80px);   /* адаптивный отступ сверху */
 }
 
-.header-parting-text{
+/* ===== ЗАГОЛОВОК "Ждем вас через..." ===== */
+.header-parting-text {
     font-family: 'Anticva-Regular', serif;
     color: #4D728F;
-    font-size: 28px;
+    font-size: clamp(20px, 5vw, 28px);      /* от 22 до 28px */
     font-weight: 400;
-    max-width: 350px;
-    margin-top: 50px;
-    margin-bottom: 50px;
-}
-
-.with-love-text{
-    font-family: 'Kapakana', serif;
-    color: #4D728F;
-    font-size: 50px;
-    font-weight: 400;
-    max-width: 350px;
     text-align: center;
-    margin-top: 180px;
+    max-width: clamp(250px, 80vw, 350px);   /* гибкая ширина */
+    margin-top: clamp(30px, 8vh, 50px);
+    margin-bottom: clamp(30px, 8vh, 50px);
 }
 
-.with-love-parting{
-    align-items: center;
-}
+/* ===== ТАЙМЕР ===== */
 
 /* Контейнер таймера */
 .parting-time-grid {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 8px;
+    gap: clamp(4px, 1.5vh, 8px);           /* адаптивный gap */
     width: 100%;
 }
 
 /* Верхний ряд (числа и двоеточия) */
 .parting-grid-numbers {
     display: grid;
-    grid-template-columns: repeat(5, auto);  /* 5 колонок: число, :, число, :, число */
-    gap: 8px;
+    grid-template-columns: repeat(5, auto);
+    gap: clamp(4px, 2vw, 8px);             /* адаптивный gap */
     align-items: center;
     justify-content: center;
 }
@@ -60,8 +50,8 @@
 /* Нижний ряд (подписи) */
 .parting-grid-words {
     display: grid;
-    grid-template-columns: repeat(5, auto);  /* те же 5 колонок */
-    gap: 8px;
+    grid-template-columns: repeat(5, auto);
+    gap: clamp(4px, 2vw, 8px);
     justify-content: center;
 }
 
@@ -69,28 +59,90 @@
 .parting-numbers-element {
     font-family: 'Kapakana', serif;
     color: #4D728F;
-    font-size: 48px;
+    font-size: clamp(36px, 10vw, 48px);     /* от 36 до 48px */
     font-weight: 500;
     text-align: center;
-    min-width: 50px;
+    min-width: clamp(35px, 10vw, 50px);     /* адаптивная ширина */
 }
 
 /* Стили для двоеточий */
 .twodots {
-    font-size: 40px;
-    min-width: 20px;
+    font-size: clamp(30px, 8vw, 40px);      /* от 30 до 40px */
+    min-width: clamp(15px, 4vw, 20px);      /* адаптивная ширина */
+    text-align: center;
 }
 
 /* Стили для подписей */
 .parting-words-element {
     font-family: 'Anticva-Regular', serif;
     color: #4D728F;
-    font-size: 14px;
+    font-size: clamp(11px, 3vw, 14px);      /* от 11 до 14px */
     text-align: center;
-    min-width: 50px;
+    min-width: clamp(35px, 10vw, 50px);     /* адаптивная ширина */
 }
 
 /* Пустые ячейки (под двоеточиями) */
 .parting-words-element.empty {
-    min-width: 20px;        /* такая же ширина, как у двоеточий */
+    min-width: clamp(15px, 4vw, 20px);      /* такая же ширина, как у двоеточий */
+    visibility: hidden;                     /* скрываем, но место оставляем */
+}
+
+/* ===== WITH LOVE ===== */
+.with-love-parting {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: clamp(120px, 25vh, 180px);  /* адаптивный отступ сверху */
+    margin-bottom: clamp(30px, 8vh, 60px);
+}
+
+.with-love-text {
+    font-family: 'Kapakana', serif;
+    color: #4D728F;
+    font-size: clamp(36px, 10vw, 50px);     /* от 36 до 50px */
+    font-weight: 400;
+    text-align: center;
+    max-width: clamp(250px, 80vw, 350px);
+}
+
+/* ===== АНИМАЦИИ ДЛЯ ЧЕТВЁРТОГО СЛАЙДА ===== */
+
+/* Базовое состояние — скрыто */
+.parting .animate-on-scroll {
+    opacity: 0;
+    transform: translateY(35px);
+    transition: opacity 1.4s cubic-bezier(0.25, 0.95, 0.4, 1.05),
+    transform 1.4s cubic-bezier(0.25, 0.95, 0.4, 1.05);
+}
+
+/* Состояние после появления */
+.parting .animate-on-scroll.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Задержки для последовательного появления */
+.parting .header-parting-text.animate-on-scroll.visible { transition-delay: 0.1s; }
+.parting .parting-grid-numbers.animate-on-scroll.visible { transition-delay: 0.35s; }
+.parting .parting-grid-words.animate-on-scroll.visible { transition-delay: 0.7s; }
+.parting .with-love-text.animate-on-scroll.visible { transition-delay: 1s; }
+
+/* Дополнительно: эффект масштабирования для таймера */
+.parting .parting-grid-numbers.animate-on-scroll {
+    transform: scale(0.85) translateY(25px);
+}
+
+.parting .parting-grid-numbers.animate-on-scroll.visible {
+    transform: scale(1) translateY(0);
+}
+
+/* Лёгкий эффект для сердечка или декора */
+@keyframes gentlePulse {
+    0%, 100% { opacity: 0.7; transform: scale(0.98); }
+    50% { opacity: 1; transform: scale(1.02); }
+}
+
+.parting .with-love-text.animate-on-scroll.visible {
+    animation: gentlePulse 1.2s ease-in-out 1s;
 }

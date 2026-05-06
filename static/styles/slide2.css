@@ -1,84 +1,87 @@
+/* ===== ВТОРОЙ СЛАЙД ===== */
 
-
-.greeting{
+.greeting {
     display: flex;
     align-items: flex-start;
     justify-content: center;
-    background-image: url("../images/stroke.svg");
 }
 
-.greeting-content{
+.greeting-content {
     display: flex;
-    flex-direction: column;   /* элементы выстраиваются вертикально */
-    align-items: center;      /* горизонтальное выравнивание внутри колонки */
+    flex-direction: column;
+    align-items: center;
     width: 100%;
     max-width: 350px;
-    padding-top: 130px;
+    padding-top: clamp(80px, 15vh, 130px);  /* адаптивный отступ сверху */
 }
 
-.header-greeting{
-    padding: 0;
-    margin: 0;
-}
-
-.greeting-header-text{
-    margin-top: 0;
-}
-
-.month-greeting{
-    margin-top: 60px;
-}
-
-.greeting-body-text{
-    max-width: 280px;
-    text-align: center;
-    font-size: 20px;
-}
-
+/* Текст приветствия */
 .greeting-text {
     font-family: 'Anticva-Regular', serif;
 }
 
 .greeting-header-text {
     font-family: 'Playfair Display SC', serif;
-    font-size: 32px;
+    font-size: clamp(28px, 6.5vw, 32px);    /* от 28 до 32px */
+    margin-top: 0;
 }
 
-.greeting-month-text{
-    font-size: 24px;
+.greeting-body-text {
+    max-width: clamp(260px, 70vw, 280px);   /* гибкая ширина */
+    text-align: center;
+    font-size: clamp(16px, 4vw, 20px);       /* от 16 до 20px */
+    line-height: 1.4;
 }
 
+.greeting-month-text {
+    font-size: clamp(20px, 5vw, 24px);       /* от 20 до 24px */
+}
 
+/* Блок с бантом и календарём */
+.calendar-with-bow {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-top: clamp(15px, 4vh, 20px);
+    margin-bottom: clamp(30px, 8vh, 40px);
+}
 
+/* Месяц */
+.month-greeting {
+    margin-top: clamp(40px, 8vh, 60px);
+    margin-bottom: clamp(10px, 2vh, 20px);
+}
 
-
+/* Календарь */
 .date-greeting {
     width: 100%;
     margin-top: -4px;
-
     display: flex;
     justify-content: center;
+    position: relative;
+    z-index: 2;
 }
 
-/* Основная сетка календаря */
+/* Сетка календаря */
 .calendar-grid {
     display: grid;
-    grid-template-rows: auto auto;  /* два ряда: дни недели и числа */
-    gap: 18px;
-    width: 70%;
-
+    grid-template-rows: auto auto;
+    gap: clamp(12px, 3vh, 18px);
+    width: min(80%, 280px);                 /* гибкая ширина */
 }
 
-/* Ряд с днями недели */
+/* Дни недели */
 .calendar-weekdays {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);  /* 5 равных колонок */
-    gap: 2px;                               /* минимальный зазор */
+    grid-template-columns: repeat(5, 1fr);
+    gap: clamp(2px, 1vw, 4px);              /* адаптивный зазор */
 }
 
 .weekday {
     font-family: 'Anticva-Regular', serif;
-    font-size: 18px;
+    font-size: clamp(14px, 4vw, 18px);      /* от 14 до 18px */
     color: #4D728F;
     letter-spacing: 1px;
     text-align: center;
@@ -86,41 +89,60 @@
     margin: 0;
 }
 
-/* Ряд с числами */
+/* Числа */
 .calendar-dates {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);  /* 5 равных колонок */
-    gap: 2px;                               /* минимальный зазор */
+    grid-template-columns: repeat(5, 1fr);
+    gap: clamp(2px, 1vw, 4px);
 }
 
 .date {
     font-family: 'Anticva-Regular', serif;
-    font-size: 22px;
+    font-size: clamp(18px, 5vw, 22px);      /* от 18 до 22px */
     color: #4D728F;
     text-align: center;
     padding: 0;
     margin: 0;
 }
 
-.calendar-with-bow {
-    position: relative;        /* ← ключевой момент! Теперь внутри всё будет отталкиваться от этого блока */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    margin-top: 20px;
-    margin-bottom: 40px;
+/* Выделенная дата (11 число) */
+.date-highlight {
+    position: relative;
+    z-index: 1;
+    font-weight: bold;
 }
 
+/* Обёртка для выделенной даты */
+.date-highlight-wrapper {
+    position: relative;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Рамка вокруг выделенной даты */
+.date-frame {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: clamp(50px, 12vw, 65px);         /* от 50 до 65px */
+    height: auto;
+    aspect-ratio: 65 / 56;                  /* сохраняем пропорции */
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* ===== БАНТ ===== */
 .bow-wrapper {
-    position: absolute;        /* ← бант вырывается из общего потока */
-    top: 10px;                /* ← смещаем вверх (относительно .calendar-with-bow) */
-    left: 50%;                 /* ← привязываем к центру родителя */
-    transform: translateX(-50%); /* ← центрируем относительно своей ширины */
-    width: 85%;                /* ← ширина банта (проценты относительно родителя) */
-    max-width: 300px;          /* ← ограничиваем максимум */
-    z-index: 1;                /* ← слой 1 (ниже календаря) */
-    pointer-events: none;      /* ← бант не мешает нажимать на календарь */
+    position: absolute;
+    top: clamp(-15px, -2vh, 10px);          /* адаптивное смещение */
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(85%, 300px);                 /* не больше 300px */
+    max-width: 300px;
+    z-index: 1;
+    pointer-events: none;
 }
 
 .bow-image {
@@ -129,33 +151,33 @@
     display: block;
 }
 
-.date-greeting {
-    position: relative;         /* ← чтобы z-index работал */
-    z-index: 2;                /  /* ← прозрачный фон, чтобы бант был виден */
+.wd{
+    opacity: 70%;
 }
 
-.date-highlight-wrapper {
-    position: relative;
-    display: inline-flex;
-    justify-content: center;
-
-    align-items: center;
+.ed{
+    opacity: 85%;
 }
 
-/* Сама рамка (абсолютное позиционирование внутри обёртки) */
-.date-frame {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 65px;
-    height: 56px;
-    z-index: 0;
-    pointer-events: none;
+/* ===== АНИМАЦИИ ДЛЯ ВТОРОГО СЛАЙДА ===== */
+
+/* Базовое состояние — элементы видны, но с прозрачностью 0 */
+.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(35px);
+    transition: opacity 1.2s cubic-bezier(0.25, 0.95, 0.4, 1.05),
+    transform 1.2s cubic-bezier(0.25, 0.95, 0.4, 1.05);
 }
 
-/* Текст даты — поверх рамки */
-.date-highlight {
-    position: relative;
-    z-index: 1;
+.animate-on-scroll.visible {
+    opacity: 1;
+    transform: translateY(0);
 }
+
+/* Задержки — очень плавные */
+.greeting-header-text.visible { transition-delay: 0.15s; }
+.greeting-body-text.visible { transition-delay: 0.35s; }
+.month-greeting.visible { transition-delay: 0.55s; }
+.bow-wrapper.visible { transition-delay: 0.75s; }
+.calendar-weekdays.visible { transition-delay: 0.95s; }
+.calendar-dates.visible { transition-delay: 1.15s; }

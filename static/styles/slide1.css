@@ -1,85 +1,166 @@
-.title{
+/* ===== ПЕРВЫЙ СЛАЙД С CLAMP() ===== */
+
+.title {
     display: flex;
     align-items: center;
     justify-content: center;
     background-image: url("../images/background.png");
+    background-size: cover;        /* ← растягивает фон на весь слайд */
+    background-position: center;   /* ← центрирует */
+    background-repeat: no-repeat;
 }
 
-.title-text{
+.title-text {
     font-family: 'Kapakana', cursive;
     margin: 0;
     padding: 0;
     line-height: 1.2;
 }
 
-
-.wedding-line-text{
-    font-size: 42px;
+/* Шрифты с clamp() */
+.wedding-line-text {
+    font-size: clamp(32px, 9vw, 42px);
+    /* На 320px: ~28px, на 390px: ~32px, на 430px: ~42px */
 }
 
-.rashid-line-text, .marina-line-text, .ampersand-line-text{
-    font-size: 40px;
+.rashid-line-text,
+.marina-line-text,
+.ampersand-line-text {
+    font-size: clamp(30px, 7.5vw, 40px);
+    /* На 320px: ~26px, на 390px: ~30px, на 430px: ~40px */
 }
 
-.date-line-text{
-    font-size: 36px;
+.date-line-text {
+    font-size: clamp(28px, 6.5vw, 36px);
+    /* На 320px: ~24px, на 390px: ~26px, на 430px: ~36px */
 }
 
-.title-content-body{
+/* Группировка */
+.names-group {
     display: flex;
-    flex-direction: column;   /* элементы выстраиваются вертикально */
-    align-items: center;      /* горизонтальное выравнивание внутри колонки */
-    gap: 8px;               /* расстояние между элементами */
-    width: 100%;
-    max-width: 350px;
-}
-
-.names-group{
-    display: flex;
-    flex-direction: column;   /* элементы выстраиваются вертикально */
+    flex-direction: column;
     align-items: center;
 }
 
+/* Плотная подгонка строк (оставляем с отрицательными margin, но тоже адаптируем) */
 .rashid-line-text {
-    margin-top: 12px;
-    margin-bottom: -8px;
+    margin-top: clamp(8px, 2vh, 12px);
+    margin-bottom: clamp(-12px, -1.5vh, -8px);
 }
+
 .ampersand-line-text {
-    margin-top: -4px;
-    margin-bottom: -4px;
+    margin-top: clamp(-8px, -1vh, -4px);
+    margin-bottom: clamp(-8px, -1vh, -4px);
 }
+
 .marina-line-text {
-    margin-top: -8px;
-    margin-bottom: 12px;
+    margin-top: clamp(-12px, -1.5vh, -8px);
+    margin-bottom: clamp(8px, 2vh, 12px);
 }
 
-
-.title-content-body{
-    background-image: url("../images/shield2.svg");
-    background-size: contain;     /* щит вписывается в контейнер */
-    background-repeat: no-repeat;
-    background-position: center;
-    position: relative;           /* для позиционирования текста внутри */
+/* Внутренний щит — гибкие размеры */
+.title-content-body {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 245px;
-    height: 371px;
+    gap: clamp(4px, 1.5vh, 8px);
+
+    background-image: url("../images/shield2.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: relative;
+
+    /* ГИБКИЕ РАЗМЕРЫ */
+    width: min(92%, 280px);        /* не больше 280px, но и не меньше 92% от родителя */
+    aspect-ratio: 245 / 371;       /* сохраняем пропорции */
 }
 
-.title-content{
-    background-image: url("../images/shield1.svg");  /* большой щит */
+/* Внешний щит — гибкие размеры */
+.title-content {
+    background-image: url("../images/shield1.svg");
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
 
-    /* Размеры внешнего щита (подставьте ваши точные значения) */
-    width: 264px;
-    height: 401px;
+    /* ГИБКИЕ РАЗМЕРЫ */
+    width: min(85%, 320px);        /* не больше 320px */
+    aspect-ratio: 264 / 401;       /* сохраняем пропорции */
 
     display: flex;
     align-items: center;
     justify-content: center;
-
     position: relative;
+}
+
+@media (min-width: 768px) {
+    .title,
+    .greeting,
+    .location,
+    .parting {
+        background-image: none !important;
+        background-color: #F3F0E6;  /* оставляем только цвет фона */
+    }
+}
+
+
+/* ===== АНИМАЦИИ ===== */
+
+/* Анимации для первого слайда */
+@keyframes fadeInScale {
+    0% {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Базовое состояние — без анимации */
+.title-content,
+.wedding-line-text,
+.rashid-line-text,
+.ampersand-line-text,
+.marina-line-text,
+.date-line-text {
+    opacity: 0;
+}
+
+/* Состояние с анимацией — добавляется через JS */
+.title-content.animate {
+    animation: fadeInScale 0.7s ease-out forwards;
+}
+
+.wedding-line-text.animate {
+    animation: fadeInUp 0.5s ease-out 0.1s forwards;
+}
+
+.rashid-line-text.animate {
+    animation: fadeInUp 0.5s ease-out 0.3s forwards;
+}
+
+.ampersand-line-text.animate {
+    animation: fadeInUp 0.5s ease-out 0.5s forwards;
+}
+
+.marina-line-text.animate {
+    animation: fadeInUp 0.5s ease-out 0.7s forwards;
+}
+
+.date-line-text.animate {
+    animation: fadeInUp 0.5s ease-out 0.9s forwards;
 }

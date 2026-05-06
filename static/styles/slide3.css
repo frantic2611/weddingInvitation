@@ -1,104 +1,105 @@
-.location{
+/* ===== ТРЕТИЙ СЛАЙД ===== */
+
+.location {
     display: flex;
     align-items: flex-start;
     justify-content: center;
-    background-image: url("../images/stroke.svg");
 }
 
-.location-content{
-    display: flex;
-    flex-direction: column;   /* элементы выстраиваются вертикально */
-    align-items: center;      /* горизонтальное выравнивание внутри колонки */
-    width: 100%;
-    max-width: 350px;
-    padding-top: 80px;
-}
-
-.location-text{
-    font-family: "Anticva-Regular", cursive;
-}
-
-.header-location-text{
-    font-family: "Playfair Display SC", serif;
-    font-size: 32px;
-    margin-top: 0;
-    max-width: 280px;
-
-}
-
-.header-location-group{
+.location-content {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 0;
+    width: 100%;
+    max-width: 350px;
+    padding-top: clamp(60px, 12vh, 80px);   /* адаптивный отступ сверху */
+}
+
+.location-text {
+    font-family: "Anticva-Regular", cursive;
+}
+
+/* ===== ЗАГОЛОВОК "МЕСТО И ПРОГРАММА" ===== */
+/* ===== ЗАГОЛОВОК "МЕСТО И ПРОГРАММА" ===== */
+
+.header-location-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: -8px;                     /* отрицательный gap не работает, используем margin */
 }
 
 .header-place-text {
     font-family: 'Playfair Display SC', cursive;
-    font-size: 32px;
-    margin-bottom: -12px;         /* притягивает амперсанд вверх */
+    font-size: clamp(26px, 6vw, 32px);
+    margin-bottom: -10px;          /* притягивает амперсанд снизу */
 }
 
-/* Амперсанд — курсивный, красивый */
 .header-ampersand-text {
-    font-family: 'Classica_one', cursive;  /* или Kapakana, или ваш Anticva */
-    font-size: 22px;
-    margin-top: 3px;
-    margin-bottom: -24px;
+    font-family: 'Classica_one', cursive;
+    font-size: clamp(18px, 4vw, 22px);
+    margin-top: -1px;             /* притягивает к "Место" */
+    margin-bottom: -15px;          /* притягивает "Программу" вверх */
     color: #4D728F;
 }
 
-/* Слово "Программа" */
 .header-program-text {
     font-family: 'Playfair Display SC', cursive;
-    font-size: 32px;
-    margin-top: -8px;
+    font-size: clamp(26px, 6vw, 32px);
+    margin-top: -12px;             /* притягивает к амперсанду */
 }
 
-.address-location-text{
-    max-width: 280px;
-    font-size: 18px;
+/* ===== АДРЕС ===== */
+.address-location-text {
+    max-width: clamp(250px, 70vw, 280px);   /* гибкая ширина */
+    font-size: clamp(14px, 4vw, 18px);      /* от 14 до 18px */
     text-align: left;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
-.roze-location{
+
+/* ===== РОЗА (ДЕКОР) ===== */
+.roze-location {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-bottom: -100px;
-    margin-top: 12px;
-}
-.roze-frame{
-    width: 65%;
-    height: 65%;
-
+    margin-bottom: clamp(-120px, -15vh, -100px);
+    margin-top: clamp(8px, 2vh, 12px);
 }
 
-/* Родительский контейнер — точка отсчёта для линии */
-/* Родительский контейнер — точка отсчёта для линии */
+.roze-frame {
+    width: min(65%, 180px);                 /* не шире 180px */
+    height: auto;
+}
+
+/* ===== ПРОГРАММА С ЛИНИЕЙ И РОМБИКАМИ ===== */
+
+/* Родительский контейнер */
 .program-layout {
     position: relative;
-    max-width: 300px;
-    margin-top: 150px;
-    margin-left: 16px;
+    max-width: min(300px, 85%);             /* на узких экранах уже */
+    width: 100%;
+    margin-top: clamp(100px, 20vh, 150px);
+    margin-left: auto;                       /* центрируем */
+    margin-right: auto;                      /* центрируем */
 }
 
-/* Одна сплошная вертикальная линия */
+/* Вертикальная линия */
 .vertical-line {
     position: absolute;
-    left: 85px;              /* ← позиция линии */
+    left: clamp(65px, 18vw, 85px);          /* адаптивное положение */
     top: 0;
     bottom: 0;
     width: 1.5px;
     background-color: #4D728F;
     z-index: 0;
-    margin-left: 10px;
 }
 
-/* Грид — поверх линии */
+/* Грид программы */
 .program-grid {
     display: grid;
     grid-template-columns: auto 1fr;
-    gap: 64px 24px;
+    gap: clamp(30px, 8vw, 64px) clamp(12px, 3vw, 24px);  /* адаптивные отступы */
     align-items: center;
     position: relative;
     z-index: 1;
@@ -108,32 +109,56 @@
 .program-time {
     font-family: 'Playfair Display SC', cursive;
     color: #4D728F;
-    font-size: 30px;
+    font-size: clamp(22px, 6vw, 30px);      /* от 22 до 30px */
     font-weight: 200;
     text-align: right;
     position: relative;
-    padding-right: 25px;
+    padding-right: clamp(15px, 4vw, 25px);  /* адаптивный отступ */
 }
 
-/* Ромбик — позиционируем АБСОЛЮТНО от левого края, а не от текста */
+/* Ромбик */
 .program-time::after {
     content: '';
     position: absolute;
-    left: 85px;              /* ← то же значение, что и у .vertical-line */
+    left: clamp(65px, 18vw, 85px);          /* должно совпадать с .vertical-line */
     top: 50%;
     transform: translate(-50%, -50%) rotate(45deg);
-    width: 10px;
-    height: 10px;
+    width: clamp(8px, 2vw, 10px);           /* от 8 до 10px */
+    height: clamp(8px, 2vw, 10px);
     background-color: #4D728F;
     z-index: 2;
-    margin-left: 11px;
 }
 
+/* Описание */
 .program-describe {
     font-family: 'Anticva-Regular', serif;
     color: #4D728F;
-    font-size: 20px;
+    font-size: clamp(16px, 4.5vw, 20px);    /* от 16 до 20px */
     text-align: left;
-    margin-top: 12px/* описание прижато к левому краю */
+    margin-top: clamp(6px, 1.5vh, 12px);
 }
 
+/* ===== АНИМАЦИИ ДЛЯ ТРЕТЬЕГО СЛАЙДА ===== */
+
+/* Базовое состояние — скрыто */
+.location .animate-on-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 1s cubic-bezier(0.2, 0.9, 0.4, 1.1),
+    transform 1s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+}
+
+/* Состояние после появления */
+.location .animate-on-scroll.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Задержки для последовательного появления */
+.location .header-place-text.animate-on-scroll.visible { transition-delay: 0.05s; }
+.location .header-ampersand-text.animate-on-scroll.visible { transition-delay: 0.15s; }
+.location .header-program-text.animate-on-scroll.visible { transition-delay: 0.25s; }
+.location .address-location-text.animate-on-scroll.visible { transition-delay: 0.4s; }
+.location .roze-frame.animate-on-scroll.visible { transition-delay: 0.55s; }
+.location .program-time.animate-on-scroll.visible { transition-delay: 0.7s; }
+.location .program-describe.animate-on-scroll.visible { transition-delay: 0.85s; }

@@ -1,0 +1,81 @@
+/* ===== ПРЕЛОАДЕР (ЭКРАН-ЗАСТАВКА) ===== */
+
+#preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #F3F0E6;        /* цвет фона как у слайдов */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;              /* поверх всего */
+    transition: opacity 0.5s ease-out;
+}
+
+.preloader-content {
+    text-align: center;
+    padding: 20px;
+    max-width: 300px;
+    animation: fadeInUp 0.8s ease-out;
+}
+
+.preloader-title {
+    font-family: 'Playfair Display SC', serif;
+    font-size: clamp(24px, 6vw, 32px);
+    color: #4D728F;
+    margin-bottom: 16px;
+}
+
+.preloader-names {
+    font-family: 'Kapakana', cursive;
+    font-size: clamp(28px, 7vw, 40px);
+    color: #4D728F;
+    margin-bottom: 40px;
+}
+
+.preloader-btn {
+    font-family: 'Anticva-Regular', serif;
+    font-size: 18px;
+    color: #F3F0E6;
+    background-color: #4D728F;
+    border: none;
+    padding: 12px 32px;
+    border-radius: 40px;
+    cursor: pointer;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.preloader-btn:hover {
+    background-color: #6b8fa8;
+    transform: scale(1.02);
+}
+
+.preloader-btn:active {
+    transform: scale(0.98);
+}
+
+/* Анимация появления */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Анимация исчезновения прелоадера */
+#preloader.fade-out {
+    opacity: 0;
+}
+
+
+/* Когда прелоадер скрыт — возвращаем прокрутку */
+#preloader.fade-out ~ body,
+#preloader.fade-out ~ main {
+    overflow: auto;
+}
