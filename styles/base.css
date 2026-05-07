@@ -5,7 +5,7 @@
 
 @font-face {
     font-family: 'Anticva-Regular';
-    src: url('../../fonts/Anticva-Regular.otf') format('opentype');
+    src: url('../fonts/Anticva-Regular.otf') format('opentype');
     font-weight: normal;
     font-style: normal;
     font-display: swap;
@@ -13,7 +13,7 @@
 
 @font-face {
     font-family: 'Classica_one';
-    src: url('../../fonts/Classica_One.ttf') format('truetype');
+    src: url('../fonts/Classica_One.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
     font-display: swap;
