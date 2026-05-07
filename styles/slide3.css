@@ -12,7 +12,8 @@
     align-items: center;
     width: 100%;
     max-width: 350px;
-    padding-top: clamp(60px, 12vh, 80px);   /* адаптивный отступ сверху */
+    padding: clamp(60px, 12vh, 80px) clamp(20px, 5vw, 30px);  /* добавляем боковые отступы */
+    /* адаптивный отступ сверху */
 }
 
 .location-text {
