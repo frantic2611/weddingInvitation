@@ -19,19 +19,19 @@
 
 /* Шрифты с clamp() */
 .wedding-line-text {
-    font-size: clamp(32px, 9vw, 42px);
+    font-size: clamp(40px, 9vw, 42px);
     /* На 320px: ~28px, на 390px: ~32px, на 430px: ~42px */
 }
 
 .rashid-line-text,
 .marina-line-text,
 .ampersand-line-text {
-    font-size: clamp(30px, 7.5vw, 40px);
+    font-size: clamp(38px, 7.5vw, 40px);
     /* На 320px: ~26px, на 390px: ~30px, на 430px: ~40px */
 }
 
 .date-line-text {
-    font-size: clamp(28px, 6.5vw, 36px);
+    font-size: clamp(36px, 6.5vw, 36px);
     /* На 320px: ~24px, на 390px: ~26px, на 430px: ~36px */
 }
 

@@ -19,7 +19,7 @@
 .header-parting-text {
     font-family: 'Anticva-Regular', serif;
     color: #4D728F;
-    font-size: clamp(20px, 5vw, 28px);      /* от 22 до 28px */
+    font-size: clamp(24px, 5vw, 28px);      /* от 22 до 28px */
     font-weight: 400;
     text-align: center;
     max-width: clamp(250px, 80vw, 350px);   /* гибкая ширина */
@@ -59,7 +59,7 @@
 .parting-numbers-element {
     font-family: 'Kapakana', serif;
     color: #4D728F;
-    font-size: clamp(36px, 10vw, 48px);     /* от 36 до 48px */
+    font-size: clamp(40px, 10vw, 48px);     /* от 36 до 48px */
     font-weight: 500;
     text-align: center;
     min-width: clamp(35px, 10vw, 50px);     /* адаптивная ширина */
@@ -76,7 +76,7 @@
 .parting-words-element {
     font-family: 'Anticva-Regular', serif;
     color: #4D728F;
-    font-size: clamp(11px, 3vw, 14px);      /* от 11 до 14px */
+    font-size: clamp(14px, 3vw, 14px);      /* от 11 до 14px */
     text-align: center;
     min-width: clamp(35px, 10vw, 50px);     /* адаптивная ширина */
 }
@@ -100,7 +100,7 @@
 .with-love-text {
     font-family: 'Kapakana', serif;
     color: #4D728F;
-    font-size: clamp(36px, 10vw, 50px);     /* от 36 до 50px */
+    font-size: clamp(50px, 10vw, 50px);     /* от 36 до 50px */
     font-weight: 400;
     text-align: center;
     max-width: clamp(250px, 80vw, 350px);
